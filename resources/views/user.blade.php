@@ -1,32 +1,17 @@
-<h1>
-    Hello World
-</h1>
+@extends('layouts.default')
 
-{{-- {{ route('user.show', 2) }} --}}
-{{ $user->name }} <br>
-{{ $user->email }} <br><br>
+@section('title', 'User title')
 
-{{ date('d/m/Y') }}
+@section('sidebar')
+    <div>
+        <nav>
+            user sidebar
+        </nav>
+    </div>
+@endsection
 
-<br>
-@php
-    $total = 100;
-    $array = [];
-    $boolean = false;
-@endphp
-
-@unless($boolean)
-    {{ 'falso' }} <br>
-@endunless
-
-@empty($array)
-    vazio <br><br>
-@endempty
-
-@if($total >= 100)
-    Muito caro <br><br>
-@elseif($total < 80)
-    Ta de boa
-@else 
-    Ta barato
-@endif
+@section('content')
+    <h1>User</h1>
+    {{ $user->name }} <br>
+    {{ $user->email }} <br><br>
+@endsection
