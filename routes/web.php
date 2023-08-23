@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('user/{user:email}', function(User $user) {
+    // dd($user);
+    return $user;
+});
+
+Route::prefix('usuarios')->group(function() {
+    Route::get('', function(){
+        return 'usuarios';
+    })->name('usuarios');
+
+    Route::get('/{id}', function($id){
+        return 'mostrar detalhes ' . $id;
+    })->name('usuarios.show');
+
+    Route::get('/{id}/tags', function(){
+        return 'Tags do usuario';
+    })->name('usuarios.tags');
+});
+
+
+Route::get('/a-empresa/{string?}', function ($string = null) {
+    return $string;
+    // return view('welcome');
+})->name('a-empresa');
+
+Route::get('/users/{paramA}/{paramB}', function ($paramA, $paramB) {
+    return $paramA . ' - ' . $paramB;
+    // return view('welcome');
 });
