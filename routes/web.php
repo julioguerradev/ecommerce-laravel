@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +32,7 @@ Route::get('/request', function(Request $request) {
     return 'x';
 });
 
-Route::get('user/{user:email}', function(User $user) {
-    return $user;
-});
+Route::get('user/{user}', [UserController::class, 'show']);
 
 Route::prefix('usuarios')->group(function() {
     Route::get('', function(){
