@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/request', function(Request $request) {
+    // $request->all():  Se for get pega os dados da Query String
+    // $request->input('teste'):  Pega o valor)
+    // $request->has('keyword');
+    // $request->path()
+    // $request->url(): Pega a url
+    // $request->fullUrl(): Url completa (inclusive a query string)
+    // $request->header()
+    // $request->whenHas('teste', function($input) {dd('x', $input);});
+    // $request->whenFilled('teste', function($input) {dd('x', $input);});
+    // $request->ip()
+    $r = $request->query();
+
+    dd($r);
+    return 'x';
+});
+
 Route::get('user/{user:email}', function(User $user) {
-    // dd($user);
     return $user;
 });
 
